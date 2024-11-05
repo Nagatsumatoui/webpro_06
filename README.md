@@ -9,13 +9,7 @@ app5.js | プログラム本体
 public/janken.html | じゃんけんの開始画面
 views/janken.ejs | じゃんけんのテンプレートファイル
 
-```javascript
-console.log('Hello');
-```
-```mermaid
-flowchart TD;
-開始 --> 終了;
-```
+
 ```mermaid
 flowchart TD;
 
