@@ -55,3 +55,24 @@ draw --> end3
 if --> noeffect
 noeffect --> end4
 ```
+
+ファイル | 説明
+-|-
+app5.js | プログラム本体
+public/saikoro.html | じゃんけんの開始画面
+views/saikoro.ejs | じゃんけんのテンプレートファイル
+
+```mermaid
+flowchart TD;
+
+start["開始"];
+end1["終了"]
+if{"条件に合うか"}
+win["勝ち"]
+loose["負け"]
+
+start --> if
+if --> win
+win --> end1
+if --> loose
+```
