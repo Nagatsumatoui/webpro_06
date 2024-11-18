@@ -36,12 +36,22 @@ flowchart TD;
 
 start["開始"];
 end1["終了"]
+end2["終了"]
+end3["終了"]
+end4["終了"]
 if{"条件に合うか"}
 win["効果抜群"]
 loose["いまひとつ"]
+draw["通常"]
+noeffect["効果なし"]
 
 start --> if
-if -->|yes| win
+if --> win
 win --> end1
-if -->|nol| loose
+if -->  loose
+loose --> end2
+if --> draw
+draw --> end3
+if --> noeffect
+noeffect --> end4
 ```
