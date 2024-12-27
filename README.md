@@ -23,6 +23,7 @@ start --> if
 if -->|yes| win
 win --> end1
 if -->|nol| loose
+loose --> end2
 ```
 
 ファイル | 説明
@@ -60,7 +61,7 @@ noeffect --> end4
 ファイル | タイプ
 -|-
  -| ノーマル
- -| 火
+ -| 炎
  -| 水
  -| 草
  -| 電気
@@ -98,4 +99,5 @@ start --> if
 if --> win
 win --> end1
 if --> loose
+loose --> end2
 ```

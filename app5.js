@@ -73,7 +73,7 @@ app.get("/taipu", (req, res) => {
   if( num==1 ) cpu = 'ノーマル';
   else if( num==2 ) cpu = '水';
   else if( num==3 ) cpu = '草';
-  else if( num==4 ) cpu = '火';
+  else if( num==4 ) cpu = '炎';
   else if( num==5 ) cpu = '電気';
   else if( num==6 ) cpu = '地面';
   else if( num==7 ) cpu = '氷';
@@ -96,22 +96,23 @@ app.get("/taipu", (req, res) => {
   (hand === '水' && cpu === '水') ||
   (hand === '水' && cpu === '草') ||
   (hand === '水' && cpu === 'ドラゴン') ||
-  (hand === '草' && cpu === '火') ||
+  (hand === '草' && cpu === '炎') ||
   (hand === '草' && cpu === '草') ||
   (hand === '草' && cpu === '虫') ||
   (hand === '草' && cpu === '毒') ||
   (hand === '草' && cpu === '飛行') ||
+  (hand === '草' && cpu === '鋼') ||
   (hand === '草' && cpu === 'ドラゴン') ||
-  (hand === '火' && cpu === '火') ||
-  (hand === '火' && cpu === '水') ||
-  (hand === '火' && cpu === '岩') ||
-  (hand === '火' && cpu === 'ドラゴン') ||
+  (hand === '炎' && cpu === '炎') ||
+  (hand === '炎' && cpu === '水') ||
+  (hand === '炎' && cpu === '岩') ||
+  (hand === '炎' && cpu === 'ドラゴン') ||
   (hand === '電気' && cpu === '電気') ||
   (hand === '電気' && cpu === '草') ||
   (hand === '電気' && cpu === 'ドラゴン') ||
   (hand === '地面' && cpu === '草') ||
   (hand === '地面' && cpu === '虫') ||
-  (hand === '氷' && cpu === '火') ||
+  (hand === '氷' && cpu === '炎') ||
   (hand === '氷' && cpu === '水') ||
   (hand === '氷' && cpu === '氷') ||
   (hand === '氷' && cpu === '鋼') ||
@@ -129,7 +130,7 @@ app.get("/taipu", (req, res) => {
   (hand === '飛行' && cpu === '鋼') ||
   (hand === 'エスパー' && cpu === 'エスパー') ||
   (hand === 'エスパー' && cpu === '鋼') ||
-  (hand === '虫' && cpu === '火') ||
+  (hand === '虫' && cpu === '炎') ||
   (hand === '虫' && cpu === '格闘') ||
   (hand === '虫' && cpu === '毒') ||
   (hand === '虫' && cpu === '飛行') ||
@@ -144,29 +145,29 @@ app.get("/taipu", (req, res) => {
   (hand === 'アク' && cpu === '格闘') ||
   (hand === 'アク' && cpu === 'アク') ||
   (hand === 'アク' && cpu === 'フェアリー') ||
-  (hand === '鋼' && cpu === '火') ||
+  (hand === '鋼' && cpu === '炎') ||
   (hand === '鋼' && cpu === '水') ||
   (hand === '鋼' && cpu === '電気') ||
   (hand === '鋼' && cpu === '鋼') ||
-  (hand === 'フェアリー' && cpu === '火') ||
+  (hand === 'フェアリー' && cpu === '炎') ||
   (hand === 'フェアリー' && cpu === '毒') ||
   (hand === 'フェアリー' && cpu === '鋼') 
   ) {
       judgement = '効果はいまひとつ';
    } else if ( 
-    (hand === '水' && cpu === '火') ||
+    (hand === '水' && cpu === '炎') ||
     (hand === '水' && cpu === '地面') ||
     (hand === '水' && cpu === '岩') ||
     (hand === '草' && cpu === '水') ||
     (hand === '草' && cpu === '地面') ||
     (hand === '草' && cpu === '岩') ||
-    (hand === '火' && cpu === '草') ||
-    (hand === '火' && cpu === '虫') ||
-    (hand === '火' && cpu === '氷') ||
-    (hand === '火' && cpu === '鋼') ||
+    (hand === '炎' && cpu === '草') ||
+    (hand === '炎' && cpu === '虫') ||
+    (hand === '炎' && cpu === '氷') ||
+    (hand === '炎' && cpu === '鋼') ||
     (hand === '電気' && cpu === '水') ||
     (hand === '電気' && cpu === '飛行') ||
-    (hand === '地面' && cpu === '火') ||
+    (hand === '地面' && cpu === '炎') ||
     (hand === '地面' && cpu === '電気') ||
     (hand === '地面' && cpu === '毒') ||
     (hand === '地面' && cpu === '岩') ||
@@ -190,11 +191,12 @@ app.get("/taipu", (req, res) => {
     (hand === '虫' && cpu === '草') ||
     (hand === '虫' && cpu === 'エスパー') ||
     (hand === '虫' && cpu === 'アク') ||
-    (hand === '岩' && cpu === '火') ||
+    (hand === '岩' && cpu === '炎') ||
     (hand === '岩' && cpu === '氷') ||
     (hand === '岩' && cpu === '飛行') ||
     (hand === '岩' && cpu === '虫') ||
     (hand === 'ゴースト' && cpu === 'ゴースト') ||
+    (hand === 'ゴースト' && cpu === 'エスパー') || 
     (hand === 'ドラゴン' && cpu === 'ドラゴン') ||
     (hand === 'アク' && cpu === 'エスパー') ||
     (hand === 'アク' && cpu === 'ゴースト') ||
@@ -243,9 +245,9 @@ app.get("/saikoro", (req, res) => {
   if( num==1 ) cpu = '1';
   else if( num==2 ) cpu = '2';
   else if( num==3 ) cpu = '3';
-  else if( num==2 ) cpu = '4';
-  else if( num==3 ) cpu = '5'; 
-  else if( num==3 ) cpu = '6'; 
+  else if( num==4 ) cpu = '4';
+  else if( num==5 ) cpu = '5'; 
+  else if( num==6 ) cpu = '6'; 
   // ここに勝敗の判定を入れる
   let judgement = ''; 
   if ( 
