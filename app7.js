@@ -105,4 +105,41 @@ app.post("/post", (req, res) => {
   res.json( {number: bbs.length } );
 });
 
+app.post("/like", (req, res) => {
+  const id = Number(req.body.id); 
+  if (id >= 0 && id < bbs.length) {
+    bbs[id].likes = (bbs[id].likes || 0) + 1;
+    res.json({ likes: bbs[id].likes });
+  } else {
+    res.status(400).json({ error: "Invalid ID" });
+  }
+});
+
+app.post("/edit", (req, res) => {
+  const id = Number(req.body.id);
+  const message = req.body.message;
+  if (id >= 0 && id < bbs.length) {
+    bbs[id].message = message; // メッセージを更新
+    res.json({ success: true });
+  } else {
+    res.status(400).json({ error: "Invalid ID" });
+  }
+});
+
+app.post("/delete", (req, res) => {
+  const id = Number(req.body.id);
+  if (id >= 0 && id < bbs.length) {
+    bbs.splice(id, 1); 
+    res.json({ success: true });
+  } else {
+    res.status(400).json({ error: "Invalid ID" });
+  }
+});
+
+app.post("/search", (req, res) => {
+  const keyword = req.body.keyword.toLowerCase();
+  const results = bbs.filter(post => post.message.toLowerCase().includes(keyword));
+  res.json({ results });
+});
+
 app.listen(8080, () => console.log("Example app listening on port 8080!"));

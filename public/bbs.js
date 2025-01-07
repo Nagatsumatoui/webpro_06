@@ -86,3 +86,62 @@ document.querySelector('#check').addEventListener('click', () => {
         }
     });
 });
+document.querySelector('#like').addEventListener('click', () => {
+    const id = prompt("いいねする投稿のIDを入力してください:");
+    const params = {
+        method: "POST",
+        body: 'id=' + id,
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+    };
+    fetch("/like", params)
+        .then(response => response.json())
+        .then(data => alert("いいね数: " + data.likes))
+        .catch(err => console.error(err));
+});
+
+document.querySelector('#edit').addEventListener('click', () => {
+    const id = prompt("編集する投稿のIDを入力してください:");
+    const newMessage = prompt("新しいメッセージを入力してください:");
+    const params = {
+        method: "POST",
+        body: `id=${id}&message=${newMessage}`,
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+    };
+    fetch("/edit", params)
+        .then(response => response.json())
+        .then(data => alert("編集しました"))
+        .catch(err => console.error(err));
+});
+document.querySelector('#delete').addEventListener('click', () => {
+    const id = prompt("削除する投稿のIDを入力してください:");
+    const params = {
+        method: "POST",
+        body: 'id=' + id,
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+    };
+    fetch("/delete", params)
+        .then(response => response.json())
+        .then(data => alert("削除しました"))
+        .catch(err => console.error(err));
+});
+
+document.querySelector('#search-btn').addEventListener('click', () => {
+    const keyword = document.querySelector('#search').value;
+    const params = {
+        method: "POST",
+        body: 'keyword=' + keyword,
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+    };
+    fetch("/search", params)
+        .then(response => response.json())
+        .then(data => {
+            bbs.innerHTML = ""; // 結果をクリアして表示
+            for (let post of data.results) {
+                const cover = document.createElement('div');
+                cover.className = 'cover';
+                cover.innerText = `${post.name}: ${post.message}`;
+                bbs.appendChild(cover);
+            }
+        })
+        .catch(err => console.error(err));
+});
