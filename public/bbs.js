@@ -135,7 +135,7 @@ document.querySelector('#search-btn').addEventListener('click', () => {
     fetch("/search", params)
         .then(response => response.json())
         .then(data => {
-            bbs.innerHTML = ""; // 結果をクリアして表示
+            bbs.innerHTML = ""; // 結果を表示
             for (let post of data.results) {
                 const cover = document.createElement('div');
                 cover.className = 'cover';
@@ -145,3 +145,28 @@ document.querySelector('#search-btn').addEventListener('click', () => {
         })
         .catch(err => console.error(err));
 });
+
+for (let mes of response.messages) {
+    console.log(mes); // 表示する投稿
+    let cover = document.createElement('div');
+    cover.className = 'cover';
+    
+    // 投稿IDを表示
+    let id_area = document.createElement('span');
+    id_area.className = 'id';
+    id_area.innerText = `[ID: ${mes.id}] `;
+    
+    let name_area = document.createElement('span');
+    name_area.className = 'name';
+    name_area.innerText = mes.name;
+
+    let mes_area = document.createElement('span');
+    mes_area.className = 'mes';
+    mes_area.innerText = mes.message;
+
+    cover.appendChild(id_area); // IDを表示に追加
+    cover.appendChild(name_area);
+    cover.appendChild(mes_area);
+
+    bbs.appendChild(cover);
+}
