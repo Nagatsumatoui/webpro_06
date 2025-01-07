@@ -1,0 +1,108 @@
+\documentclass[uplatex,dvipdfmx]{jsarticle}
+
+\usepackage[uplatex,deluxe]{otf} % UTF
+\usepackage[noalphabet]{pxchfon} % must be after otf package
+\usepackage{stix2} %欧文＆数式フォント
+\usepackage[fleqn,tbtags]{mathtools} % 数式関連 (w/ amsmath)
+\usepackage{hira-stix} % ヒラギノフォント＆STIX2 フォント代替定義（Warning回避）
+
+\begin{document}
+
+\title{BBS新機能追加仕様書}
+\author{24G1105 長妻冬威}
+\date{2024年　1月7日}
+
+\begin{document}
+
+\maketitle
+
+
+\section{利用者向けの仕様書}
+\subsection{システム概要}
+本bbsでは、以下の新機能をBBSに追加した．
+\begin{itemize}
+    \item 投稿への「いいね」機能
+    \item 投稿編集機能
+    \item 投稿削除機能
+    \item スレッド検索機能
+\end{itemize}
+
+\subsection{利用手順}
+各機能の使い方は以下のように行う．
+\begin{enumerate}
+    \item いいね：投稿一覧からIDを確認し，いいねボタンを押して対象の投稿IDを入力する．
+    \item 編集：編集したい投稿のIDを入力し，新しいメッセージを入力する．
+    \item 削除：削除したい投稿のIDを入力する．
+    \item 検索：検索フォームにキーワードを入力し，検索結果を表示する．
+\end{enumerate}
+
+\section{管理者向け仕様書}
+\subsection{システム構成}
+システムは以下の技術で構築されている．
+\begin{itemize}
+    \item サーバ：node.js + Express
+    \item クライアント：HTML, JavaScript
+    \item データ形式：JSON
+\end{itemize}
+
+\subsection{サーバの設定と動作}
+サーバは以下のコマンドで起動する．
+\begin{verbatim}
+$ node app7.js
+\end{verbatim}
+このコマンドを入力し，別のターミナルを開き以下のコマンドを入力する．
+\begin{verbatim}
+    $ telnet localhost 8080
+\end{verbatim}
+サーバは\texttt{http://localhost:8080/public/bbs.html}を検索することで使用することができる．
+
+\subsection{データ構造}
+投稿データは以下の形式で管理される．
+\begin{verbatim}
+
+    id：0,
+    name："投稿者名",
+    message："メッセージ内容",
+    likes：0
+
+\end{verbatim}
+
+\section{開発者向け仕様書}
+\subsection{API仕様}
+\subsubsection{/post}
+新しい投稿を作成する．
+\begin{itemize}
+    \item メソッド: POST
+    \item リクエスト例:
+    \begin{verbatim}
+    { name: "Alice", message: "こんにちは" }
+    \end{verbatim}
+    \item レスポンス例:
+    \begin{verbatim}
+    { number: 1 }
+    \end{verbatim}
+\end{itemize}
+
+\subsubsection{/like}
+投稿にいいねを追加する．
+\begin{itemize}
+    \item メソッド: POST
+    \item リクエスト例:
+    \begin{verbatim}
+    { id: 0 }
+    \end{verbatim}
+    \item レスポンス例:
+    \begin{verbatim}
+    { likes: 1 }
+    \end{verbatim}
+\end{itemize}
+
+
+\section{ソースコードと実行例}
+ソースコードは以下のURLに示してある．
+\begin{itemize}
+    \item \url{https://github.com/Nagatsumatoui/webpro_06}
+\end{itemize}
+
+
+\end{document}
