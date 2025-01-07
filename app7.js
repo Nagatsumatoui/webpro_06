@@ -142,4 +142,40 @@ app.post("/search", (req, res) => {
   res.json({ results });
 });
 
+let nextId = 0; // 投稿の一意のIDを生成するカウンター
+
+app.post("/post", (req, res) => {
+  const name = req.body.name;
+  const message = req.body.message;
+  console.log([name, message]);
+
+  bbs.push({ id: nextId++, name: name, message: message, likes: 0 }); // 一意のIDを付与
+  res.json({ number: bbs.length });
+});
+
+
+app.post("/like", (req, res) => {
+  const id = Number(req.body.id); // 投稿ID
+  const post = bbs.find(p => p.id === id); // IDで投稿を検索
+  if (post) {
+    post.likes = (post.likes || 0) + 1; // いいねをインクリメント
+    res.json({ likes: post.likes });
+  } else {
+    res.status(400).json({ error: "Invalid ID" });
+  }
+});
+
+// 投稿編集
+app.post("/edit", (req, res) => {
+  const id = Number(req.body.id);
+  const message = req.body.message;
+  const post = bbs.find(p => p.id === id); // IDで投稿を検索
+  if (post) {
+    post.message = message; // メッセージを更新
+    res.json({ success: true });
+  } else {
+    res.status(400).json({ error: "Invalid ID" });
+  }
+});
+
 app.listen(8080, () => console.log("Example app listening on port 8080!"));
