@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>新規アイテム追加</title>
+</head>
+<body>
+    <h1>新規アイテム追加</h1>
+    <form action="/lol/items/add" method="POST">
+        <p>
+            <label>アイテム名:</label><br>
+            <input type="text" name="name" required>
+        </p>
+        <p>
+            <label>タイプ (Type):</label><br>
+            <select name="type">
+                <option value="Assassin">Assassin</option>
+                <option value="Fighter">Fighter</option>
+                <option value="Mage">Mage</option>
+                <option value="Marksman">Marksman</option>
+                <option value="Support">Support</option>
+                <option value="Tank">Tank</option>
+                <option value="Other">Other</option>
+            </select>
+        </p>
+        <p>
+            <label>価格 (Price):</label><br>
+            <input type="number" name="price" placeholder="3000">
+        </p>
+        <p>
+            <label>ステータス (Stats):</label><br>
+            <textarea name="stats" rows="3" cols="50" placeholder="例: +50 AD / +300 HP"></textarea>
+        </p>
+        <p>
+            <input type="submit" value="追加する">
+        </p>
+    </form>
+    <a href="/lol/items">一覧に戻る</a>
+</body>
+</html>

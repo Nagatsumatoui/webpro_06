@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>新規チャンピオン追加</title>
+</head>
+<body>
+    <h1>新規チャンピオン追加</h1>
+    <form action="/lol/add" method="POST">
+        <p>
+            <label>キャラ名:</label><br>
+            <input type="text" name="name" required>
+        </p>
+        <p>
+            <label>射程区分 (Range):</label><br>
+            <select name="range">
+                <option value="Melee">Melee</option>
+                <option value="Ranged">Ranged</option>
+            </select>
+        </p>
+        <p>
+            <label>ダメージ属性 (Damage):</label><br>
+            <input type="text" name="damage" placeholder="例: AD, AP, Mixed">
+        </p>
+        <p>
+            <label>役割 (Role):</label><br>
+            <input type="text" name="role" placeholder="例: Fighter, Tank">
+        </p>
+        <p>
+            <input type="submit" value="追加する">
+        </p>
+    </form>
+    <a href="/lol/champs">一覧に戻る</a>
+</body>
+</html>

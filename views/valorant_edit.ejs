@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>エージェント編集</title>
+</head>
+<body>
+    <h1>編集: <%= agent.name %></h1>
+    <form action="/valorant/agents/edit/<%= agent.id %>" method="POST">
+        <p>
+            <label>エージェント名:</label><br>
+            <input type="text" name="name" value="<%= agent.name %>" required>
+        </p>
+        <p>
+            <label>役割 (Role):</label><br>
+            <select name="role">
+                <option value="Duelist" <%= agent.role === 'Duelist' ? 'selected' : '' %>>Duelist</option>
+                <option value="Sentinel" <%= agent.role === 'Sentinel' ? 'selected' : '' %>>Sentinel</option>
+                <option value="Initiator" <%= agent.role === 'Initiator' ? 'selected' : '' %>>Initiator</option>
+                <option value="Controller" <%= agent.role === 'Controller' ? 'selected' : '' %>>Controller</option>
+            </select>
+        </p>
+        <p>
+            <label>アビリティ (Abilities):</label><br>
+            <textarea name="abilities" rows="3" cols="50"><%= agent.abilities %></textarea>
+        </p>
+        <p>
+            <input type="submit" value="更新する">
+        </p>
+    </form>
+    <a href="/valorant/agents">一覧に戻る</a>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title><%= champ.name %> の詳細</title>
+</head>
+<body>
+    <h1>No.<%= champ.id %>: <%= champ.name %></h1>
+
+    <table border="1">
+        <tr>
+            <th>射程区分 (Range)</th>
+            <td><%= champ.range %></td>
+        </tr>
+        <tr>
+            <th>ダメージ属性 (Damage)</th>
+            <td><%= champ.damage %></td>
+        </tr>
+        <tr>
+            <th>役割 (Role)</th>
+            <td><%= champ.role %></td>
+        </tr>
+    </table>
+
+    <br>
+    <a href="/lol/champs">一覧に戻る</a>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>新規エージェント追加</title>
+</head>
+<body>
+    <h1>新規エージェント追加</h1>
+    <form action="/valorant/agents/add" method="POST">
+        <p>
+            <label>エージェント名:</label><br>
+            <input type="text" name="name" required>
+        </p>
+        <p>
+            <label>役割 (Role):</label><br>
+            <select name="role">
+                <option value="Duelist">Duelist</option>
+                <option value="Sentinel">Sentinel</option>
+                <option value="Initiator">Initiator</option>
+                <option value="Controller">Controller</option>
+            </select>
+        </p>
+        <p>
+            <label>アビリティ (Abilities):</label><br>
+            <textarea name="abilities" rows="3" cols="50" placeholder="例: アビリティ1, アビリティ2..."></textarea>
+        </p>
+        <p>
+            <input type="submit" value="追加する">
+        </p>
+    </form>
+    <a href="/valorant/agents">一覧に戻る</a>
+</body>
+</html>

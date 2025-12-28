@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>アイテム編集</title>
+</head>
+<body>
+    <h1>編集: <%= item.name %></h1>
+    <form action="/lol/items/edit/<%= item.id %>" method="POST">
+        <p>
+            <label>アイテム名:</label><br>
+            <input type="text" name="name" value="<%= item.name %>" required>
+        </p>
+        <p>
+            <label>タイプ (Type):</label><br>
+            <select name="type">
+                <option value="Assassin" <%= item.type === 'Assassin' ? 'selected' : '' %>>Assassin</option>
+                <option value="Fighter" <%= item.type === 'Fighter' ? 'selected' : '' %>>Fighter</option>
+                <option value="Mage" <%= item.type === 'Mage' ? 'selected' : '' %>>Mage</option>
+                <option value="Marksman" <%= item.type === 'Marksman' ? 'selected' : '' %>>Marksman</option>
+                <option value="Support" <%= item.type === 'Support' ? 'selected' : '' %>>Support</option>
+                <option value="Tank" <%= item.type === 'Tank' ? 'selected' : '' %>>Tank</option>
+                <option value="Other" <%= !['Assassin','Fighter','Mage','Marksman','Support','Tank'].includes(item.type) ? 'selected' : '' %>>Other</option>
+            </select>
+        </p>
+        <p>
+            <label>価格 (Price):</label><br>
+            <input type="number" name="price" value="<%= item.price %>">
+        </p>
+        <p>
+            <label>ステータス (Stats):</label><br>
+            <textarea name="stats" rows="3" cols="50"><%= item.stats %></textarea>
+        </p>
+        <p>
+            <input type="submit" value="更新する">
+        </p>
+    </form>
+    <a href="/lol/items">一覧に戻る</a>
+</body>
+</html>

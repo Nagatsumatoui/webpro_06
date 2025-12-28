@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>LoL チャンピオン一覧</title>
+</head>
+<body>
+    <h1>LoL トップレーン チャンピオン一覧</h1>
+    
+    <p>
+        <a href="/lol/add" style="padding: 10px; background: #007bff; color: white; text-decoration: none;">
+            ＋ 新規チャンピオン追加
+        </a>
+    </p>
+
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>キャラ名</th>
+            <th>役割</th>
+            <th>操作</th>
+        </tr>
+
+        <% champs.forEach((item) => { %>
+            <tr>
+                <td><%= item.id %></td>
+                <td>
+                    <a href="/lol/champs/<%= item.id %>">
+                        <%= item.name %>
+                    </a>
+                </td>
+                <td><%= item.role %></td>
+                <td>
+                    <a href="/lol/edit/<%= item.id %>">編集</a>
+                    | 
+                    <a href="/lol/delete/<%= item.id %>" onclick="return confirm('本当に削除しますか？');">削除</a>
+                </td>
+            </tr>
+        <% }) %>
+    </table>
+
+    <p><a href="/">トップに戻る</a></p>
+</body>
+</html>

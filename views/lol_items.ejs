@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>LoL アイテム一覧</title>
+</head>
+<body>
+    <h1>LoL トップレーン コアアイテム一覧</h1>
+    <p>タイプ順（Assassin → Fighter → Mage → Marksman → Support → Tank）</p>
+
+    <p>
+        <a href="/lol/items/add" style="padding: 10px; background: #28a745; color: white; text-decoration: none;">
+            ＋ 新規アイテム追加
+        </a>
+    </p>
+    
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>アイテム名</th>
+            <th>タイプ</th>
+            <th>価格 (Gold)</th>
+            <th>操作</th>
+        </tr>
+
+        <% items.forEach((item) => { %>
+            <tr>
+                <td><%= item.id %></td>
+                <td>
+                    <a href="/lol/items/<%= item.id %>">
+                        <%= item.name %>
+                    </a>
+                </td>
+                <td><%= item.type %></td>
+                <td><%= item.price %></td>
+                <td>
+                    <a href="/lol/items/edit/<%= item.id %>">編集</a>
+                    | 
+                    <a href="/lol/items/delete/<%= item.id %>" onclick="return confirm('本当に削除しますか？');">削除</a>
+                </td>
+            </tr>
+        <% }) %>
+    </table>
+
+    <p>
+        <a href="/">トップに戻る</a> | 
+        <a href="/lol/champs">チャンピオン一覧へ</a>
+    </p>
+</body>
+</html>

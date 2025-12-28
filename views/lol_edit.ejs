@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>チャンピオン編集</title>
+</head>
+<body>
+    <h1>編集: <%= champ.name %></h1>
+    <form action="/lol/edit/<%= champ.id %>" method="POST">
+        <p>
+            <label>キャラ名:</label><br>
+            <input type="text" name="name" value="<%= champ.name %>" required>
+        </p>
+        <p>
+            <label>射程区分 (Range):</label><br>
+            <select name="range">
+                <option value="Melee" <%= champ.range === 'Melee' ? 'selected' : '' %>>Melee</option>
+                <option value="Ranged" <%= champ.range === 'Ranged' ? 'selected' : '' %>>Ranged</option>
+            </select>
+        </p>
+        <p>
+            <label>ダメージ属性 (Damage):</label><br>
+            <input type="text" name="damage" value="<%= champ.damage %>">
+        </p>
+        <p>
+            <label>役割 (Role):</label><br>
+            <input type="text" name="role" value="<%= champ.role %>">
+        </p>
+        <p>
+            <input type="submit" value="更新する">
+        </p>
+    </form>
+    <a href="/lol/champs">一覧に戻る</a>
+</body>
+</html>

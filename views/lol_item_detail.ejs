@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title><%= item.name %> の詳細</title>
+</head>
+<body>
+    <h1>アイテム詳細: <%= item.name %></h1>
+
+    <table border="1">
+        <tr>
+            <th>価格 (Price)</th>
+            <td><%= item.price %> Gold</td>
+        </tr>
+        <tr>
+            <th>タイプ (Type)</th>
+            <td><%= item.type %></td>
+        </tr>
+        <tr>
+            <th>ステータス (Stats)</th>
+            <td><%= item.stats %></td>
+        </tr>
+    </table>
+
+    <br>
+    <a href="/lol/items">アイテム一覧に戻る</a>
+</body>
+</html>

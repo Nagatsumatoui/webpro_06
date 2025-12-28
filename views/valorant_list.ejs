@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Valorant エージェント一覧</title>
+</head>
+<body>
+    <h1>Valorant エージェント一覧</h1>
+    
+    <p>
+        <a href="/valorant/agents/add" style="padding: 10px; background: #ff4655; color: white; text-decoration: none;">
+            ＋ 新規エージェント追加
+        </a>
+    </p>
+
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>エージェント名</th>
+            <th>役割 (Role)</th>
+            <th>操作</th>
+        </tr>
+
+        <% agents.forEach((agent) => { %>
+            <tr>
+                <td><%= agent.id %></td>
+                <td>
+                    <a href="/valorant/agents/<%= agent.id %>">
+                        <%= agent.name %>
+                    </a>
+                </td>
+                <td><%= agent.role %></td>
+                <td>
+                    <a href="/valorant/agents/edit/<%= agent.id %>">編集</a>
+                    | 
+                    <a href="/valorant/agents/delete/<%= agent.id %>" onclick="return confirm('本当に削除しますか？');">削除</a>
+                </td>
+            </tr>
+        <% }) %>
+    </table>
+
+    <p><a href="/">トップに戻る</a> | <a href="/lol/champs">LoLキャラ一覧へ</a> | <a href="/lol/items">LoLアイテム一覧へ</a></p>
+</body>
+</html>

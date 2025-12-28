@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title><%= agent.name %> の詳細</title>
+</head>
+<body>
+    <h1>エージェント詳細: <%= agent.name %></h1>
+
+    <table border="1">
+        <tr>
+            <th>役割 (Role)</th>
+            <td><%= agent.role %></td>
+        </tr>
+        <tr>
+            <th>アビリティ (Abilities)</th>
+            <td>
+                <% 
+                   // 1. テキストを改行(\n)で分割して配列にする
+                   // 空行が含まれる場合を除去するために filter を使う
+                   const skills = agent.abilities.split('\n').filter(s => s.trim() !== '');
+                %>
+                
+                <ul style="padding-left: 20px; margin: 5px 0;">
+                    <% skills.forEach((skill) => { 
+                         // 2. 「：」でスキル名と説明文を分ける
+                         // データ例: "スキル名：説明文"
+                         let separatorIndex = skill.indexOf('：');
+                         let name = '';
+                         let desc = skill;
+
+                         if (separatorIndex !== -1) {
+                             name = skill.substring(0, separatorIndex);
+                             desc = skill.substring(separatorIndex + 1);
+                         } else {
+                             // 区切り文字がない場合はそのまま表示するための処理
+                             // 空白区切りの場合に対応させるならここを調整
+                             name = skill.split(/[ 　]/)[0]; // 最初の空白までを名前とみなす簡易対応
+                             desc = skill.substring(name.length).trim();
+                         }
+                    %>
+                    <li style="margin-bottom: 8px;">
+                        <strong style="color: #ff4655;"><%= name %></strong>
+                        <br>
+                        <span style="font-size: 0.95em;"><%= desc %></span>
+                    </li>
+                    <% }) %>
+                </ul>
+            </td>
+        </tr>
+    </table>
+
+    <br>
+    <a href="/valorant/agents">一覧に戻る</a>
+</body>
+</html>
